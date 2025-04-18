@@ -15,7 +15,7 @@ For belt-and-suspenders testing, you should also explicitly include the chain ID
 This parameter specifies that you're interacting with the twin testnet (Chain ID 2) rather than the mainnet (Chain ID 1). The correct format is:
 
 ```bash
-libra txs --chain-id=2 --url https://twin-testnet-rpc.libra.org [subcommand] [options]
+libra txs --chain-id=2 --url https://twin-rpc.openlibra.space [subcommand] [options]
 ```
 
 Without this parameter in the correct position, your transactions will attempt to target the mainnet and might succeed, or worse, could be used for replay attacks.
@@ -49,13 +49,13 @@ libra version
 
   libra config --chain-name=testnet \
   init \
-  --fullnode-url=https://twin-testnet-rpc.libra.org
+  --fullnode-url=https://twin-rpc.openlibra.space
 
   # if you do not wish to enter a mnemonic on config you can enter the address and authkey directly.
 
   libra config --chain-name=testnet \
   init \
-  --fullnode-url https://twin-testnet-rpc.libra.org \
+  --fullnode-url https://twin-rpc.openlibra.space \
   --force-address <ADDRESS> \
   --force-authkey <AUTHKEY>
 
