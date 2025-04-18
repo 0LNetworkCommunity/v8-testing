@@ -12,6 +12,8 @@ For belt-and-suspenders testing, you should also explicitly include the chain ID
 
 **Always include `--chain-id=2` and `--url <TESTNET URL>` immediately after the `txs` command when using the twin testnet.**
 
+For the `query` command, you can use `--url <TESTNET URL>` when using the twin testnet.
+
 This parameter specifies that you're interacting with the twin testnet (Chain ID 2) rather than the mainnet (Chain ID 1). The correct format is:
 
 ```bash
@@ -110,13 +112,13 @@ libra query balance <ACCOUNT>
    - A user can check how many remaining vouches they have to give with:
 
   ```bash
-   libra query view --function 0x1::vouch_limits::get_remaining_vouches --args <YOUR_ADDRESS>
+   libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::vouch_limits::get_vouch_limit --args <YOUR_ADDRESS>
    ```
 
    - After each vouch, check your vouch score increasing:
 
    ```bash
-   libra query view --function 0x1::page_rank_lazy::get_cached_score --args <YOUR_ADDRESS>
+   libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::page_rank_lazy::get_cached_score --args <YOUR_ADDRESS>
    ```
 
    - Continue until you have enough vouches to unlock your balance
@@ -124,11 +126,11 @@ libra query balance <ACCOUNT>
 5. After sufficient number of vouches you should see a the `Founder` status and that the account is reauthorized:
 
   ```bash
-  libra query view --function 0x1::founder::is_founder --args <YOUR_ADDRESS>
+  libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::founder::is_founder --args <YOUR_ADDRESS>
   ```
 
   ```bash
-  libra query view --function 0x1::reauthorization::is_v8_reauthorized --args <YOUR_ADDRESS>
+  libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::reauthorization::is_v8_reauthorized --args <YOUR_ADDRESS>
   ```
 
 6. After every epoch boundary (15 minutes in testnet), you should see the unlocked balance increase
@@ -163,7 +165,7 @@ This feature allows community members to vote on reauthorizing community wallet 
 1. Check the list of pending community wallet reauthorization proposals:
 
 ```bash
-libra query view --function 0x1::community_wallet::get_pending_proposals
+libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_pending_proposals
 ```
 
 2. Submit your vote for a community wallet reauthorization:
@@ -175,13 +177,13 @@ libra txs --chain-id=2 community reauthorize --community-wallet <COMMUNITY_WALLE
 3. Verify your vote was recorded:
 
 ```bash
-libra query view --function 0x1::community_wallet::get_vote --args <YOUR_ADDRESS> <COMMUNITY_WALLET_ADDRESS>
+libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_vote --args <YOUR_ADDRESS> <COMMUNITY_WALLET_ADDRESS>
 ```
 
 4. Check the total votes on the reauthorization:
 
 ```bash
-libra query view --function 0x1::community_wallet::get_proposal_votes --args <COMMUNITY_WALLET_ADDRESS>
+libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_proposal_votes --args <COMMUNITY_WALLET_ADDRESS>
 ```
 
 ### Expected Outcome
@@ -201,11 +203,11 @@ In V8, the root of trust can be rotated through a community-based process. This 
 1. Check the current root of trust:
 
 ```bash
-libra query view --function 0x1::root_of_trust::get_current_root
+libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::root_of_trust::get_current_root
 ```
 
 2. Check if there's an ongoing rotation process:
 
 ```bash
-libra query view --function 0x1::root_of_trust::get_rotation_status
+libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::root_of_trust::get_rotation_status
 ```
