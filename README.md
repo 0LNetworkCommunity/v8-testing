@@ -26,6 +26,20 @@ Without this parameter in the correct position, your transactions will attempt t
 - Libra CLI installed (version 8.0.0-rc.4 or higher)
 - An account previously existing on mainnet
 
+## Install
+```
+git clone git@github.com:0LNetworkCommunity/libra-framework.git
+git checkout release-8.0.0-rc.6
+
+cd libra-framework
+cargo build --release -p libra
+cp ./target/release/libra $HOME/.cargo/bin
+
+# confirm install
+which libra
+libra version
+```
+
 ## Setup
 
 1. Configure your CLI to connect to the twin testnet:
@@ -114,7 +128,7 @@ libra query balance <ACCOUNT>
   ```
 
   ```bash
-    libra query view --function 0x1::reauthorization::is_v8_reauthorized --args <YOUR_ADDRESS>
+  libra query view --function 0x1::reauthorization::is_v8_reauthorized --args <YOUR_ADDRESS>
   ```
 
 6. After every epoch boundary (15 minutes in testnet), you should see the unlocked balance increase
