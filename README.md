@@ -47,9 +47,7 @@ libra version
   ```bash
   # config for testnet and the mnemonic to set up addresses and authkeys
 
-  libra config --chain-name=testnet \
-  init \
-  --fullnode-url=https://twin-rpc.openlibra.space
+  libra config --chain-name=testnet init --fullnode-url=https://twin-rpc.openlibra.space
 
   # if you do not wish to enter a mnemonic on config you can enter the address and authkey directly.
 
