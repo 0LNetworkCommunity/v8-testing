@@ -28,7 +28,7 @@ Without this parameter in the correct position, your transactions will attempt t
 
 ## Install
 ```
-git clone git@github.com:0LNetworkCommunity/libra-framework.git
+git clone https://github.com/0LNetworkCommunity/libra-framework
 git checkout release-8.0.0-rc.6
 
 cd libra-framework
