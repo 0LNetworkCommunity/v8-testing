@@ -14,6 +14,9 @@
 #### 0D
 - `0x2B0E8325DEA5BE93D856CFDE2D0CBA12` (Tip Jar)
 
+#### Daniyal
+- `0xFBE8DA53C92CEEEB40D8967EC033A0FB` (Community Development)
+
 ## End User
 #### 0D
 - `0x37799DA327DB4C58D5E28E7DD6338F6B` (Eng testing account)
