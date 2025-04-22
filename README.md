@@ -2,6 +2,8 @@
 
 Thank you for participating in testing the new V8 features on our twin testnet. This document provides step-by-step instructions for using the Libra CLI to execute test transactions.
 
+### See participating [testnet accounts addresses](./test-accounts.md)
+
 ## Important Note: Using The correct Network
 The instructions below will help configure a proper `~/.libra/libra-cli-config.yaml` to use for testing. It will setup to include the chain id 2 (in configs as `chain_name: TESTNET`).
 
