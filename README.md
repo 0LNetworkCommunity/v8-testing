@@ -27,13 +27,13 @@ Without this parameter in the correct position, your transactions will attempt t
 
 ## Prerequisites
 
-- Libra CLI installed (version 8.0.0-rc.4 or higher)
+- Libra CLI installed (version 8.0.0-rc.4 or higher, see below for the latest branch under test)
 - An account previously existing on mainnet
 
 ## Install
 ```
 git clone https://github.com/0LNetworkCommunity/libra-framework
-git checkout release-8.0.0-rc.6
+git checkout release-8.0.0-rc.8
 
 cd libra-framework
 cargo build --release -p libra
