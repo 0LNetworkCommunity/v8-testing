@@ -101,6 +101,10 @@ libra query balance <ACCOUNT>
   --to-account=<RECIPIENT_ADDRESS> \
   --amount=10
   ```
+3.1 Assert your account is a human founder (without this none of the accounts will be able to vouch for your account):
+```
+libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space/ user human-founder
+```
 
 4. Complete reauthorization through vouching:
   - Ask other testnet participants to vouch for you using:
