@@ -9,6 +9,10 @@
 
 #### dboreham
 - `0xEA10EA06C0FDAB689DA9DCF78FC90F4E` (dboreham validator)
+#### Keerthi
+- `D67F3FF22BD719EB5BE2DF6577C9B42D` (Keerthi validator)
+- `7E56B29CB23A49368BE593E5CFC9712E` (Newlab validator)
+- `304A03C0B4ACDFDCE54BFAF39D4E0448` (2019 contributors)
 
 ## Community Wallets
 #### 0D
@@ -16,6 +20,9 @@
 
 #### Daniyal
 - `0xFBE8DA53C92CEEEB40D8967EC033A0FB` (Community Development)
+
+#### Keerthi
+- `BC25F79FEF8A981BE4636AC1A2D6F587` (Newlab community wallet)
 
 ## End User
 #### 0D
