@@ -80,7 +80,7 @@ vouch-all:
 	@echo "Starting to vouch for all accounts..."
 	@for addr in $(VOUCH_ADDRESSES); do \
 		echo "Vouching for $$addr"; \
-		libra txs -m="$$MNEM"--chain-name=testnet --url=${FULLNODE} user vouch --vouch-for $$addr || echo "Failed to vouch for $$addr, continuing..."; \
+		libra txs -m="$$MNEM" --chain-name=testnet --url=${FULLNODE} user vouch --vouch-for $$addr || echo "Failed to vouch for $$addr, continuing..."; \
 	done
 	@echo "Completed vouching for all accounts."
 
