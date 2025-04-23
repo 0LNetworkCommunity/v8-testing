@@ -132,7 +132,7 @@ libra query balance <ACCOUNT>
   ```
 
   ```bash
-  libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::reauthorization::is_v8_reauthorized --args <YOUR_ADDRESS>
+  libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::reauthorization::is_v8_authorized --args <YOUR_ADDRESS>
   ```
 
 6. After every epoch boundary (15 minutes in testnet), you should see the unlocked balance increase
