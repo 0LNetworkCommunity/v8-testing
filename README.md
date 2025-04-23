@@ -19,7 +19,7 @@ For the `query` command, you can use `--url <TESTNET URL>` when using the twin t
 This parameter specifies that you're interacting with the twin testnet (Chain ID 2) rather than the mainnet (Chain ID 1). The correct format is:
 
 ```bash
-libra txs --chain-id=2 --url https://twin-rpc.openlibra.space [subcommand] [options]
+libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space [subcommand] [options]
 ```
 
 Without this parameter in the correct position, your transactions will attempt to target the mainnet and might succeed, or worse, could be used for replay attacks.
@@ -96,18 +96,20 @@ libra query balance <ACCOUNT>
 
   ```bash
   libra txs --chain-name=testnet \
+  --url https://twin-rpc.openlibra.space \
   transfer \
   --to-account=<RECIPIENT_ADDRESS> \
   --amount=10
   ```
 
 4. Complete reauthorization through vouching:
-   - Ask other testnet participants to vouch for you using:
-   ```bash
-   libra txs --chain-name=testnet \
-   user vouch \
-   --vouch-for=<SOME ADDRESS>
-   ```
+  - Ask other testnet participants to vouch for you using:
+  ```bash
+  libra txs --chain-name=testnet \
+  --url https://twin-rpc.openlibra.space \
+  user vouch \
+  --vouch-for=<SOME ADDRESS>
+  ```
 
    - A user can check how many remaining vouches they have to give with:
 
@@ -142,7 +144,7 @@ libra query balance <ACCOUNT>
 6. Assuming you have some unlocked balance, try the transfer again (should succeed now):
 
   ```bash
-  libra txs --chain-id=2 transfer --to <RECIPIENT_ADDRESS> --amount 10
+  libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space transfer --to <RECIPIENT_ADDRESS> --amount 10
   ```
 
 ### Expected Outcome
@@ -171,7 +173,7 @@ libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::commu
 2. Submit your vote for a community wallet reauthorization:
 
 ```bash
-libra txs --chain-id=2 community reauthorize --community-wallet <COMMUNITY_WALLET_ADDRESS>
+libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space community reauthorize --community-wallet <COMMUNITY_WALLET_ADDRESS>
 ```
 
 3. Verify your vote was recorded:
