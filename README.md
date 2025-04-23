@@ -12,7 +12,7 @@ If you are using a device that has had production keys and settings in the past,
 
 For belt-and-suspenders testing, you should also explicitly include the chain ID in your CLI arguments for testing.
 
-**Always include `--chain-id=2` and `--url <TESTNET URL>` immediately after the `txs` command when using the twin testnet.**
+**Always include `--chain-name=testnet` and `--url <TESTNET URL>` immediately after the `txs` command when using the twin testnet.**
 
 For the `query` command, you can use `--url <TESTNET URL>` when using the twin testnet.
 
