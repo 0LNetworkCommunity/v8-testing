@@ -33,7 +33,7 @@ Without this parameter in the correct position, your transactions will attempt t
 ## Install
 ```
 git clone https://github.com/0LNetworkCommunity/libra-framework
-git checkout release-8.0.0-rc.8
+git checkout release-8.0.0-rc.9
 
 cd libra-framework
 cargo build --release -p libra
