@@ -4,6 +4,34 @@ Thank you for participating in testing the new V8 features on our twin testnet. 
 
 ### See participating [testnet accounts addresses](./test-accounts.md)
 
+# Cheat Sheet
+
+```
+export MY_ADDR=<YOUR ADDRESS>
+export TO=<SOMEONE'S ADDRESS>
+
+# trigger an epoch
+libra txs governance epoch-boundary
+# init your account
+libra txs user human-founder
+# check if your account migrated
+libra query view -f -f 0x1::founder::is_founder -a $MY_ADDR
+# vouch for someone
+libra txs user vouch --vouch-for $TO
+# get your social score
+libra query view -f 0x1::page_rank_lazy::get_cached_score -a $MY_ADDR
+# get your vouching limit
+libra query view -f 0x1::vouch_limits::get_vouch_limit -a $MY_ADDR
+# if you have enough vouches with a high social score it should be authorized
+libra query view -f 0x1::reauthorization::is_v8_authorized -a $MY_ADDR
+
+# ON NEXT EPOCH you'll get a drip
+# get balance
+libra query balance $MY_ACCOUNT
+# Now you can transfer
+libra txs transfer -t $TO -a 100
+```
+
 ## Important Note: Using The correct Network
 The instructions below will help configure a proper `~/.libra/libra-cli-config.yaml` to use for testing. It will setup to include the chain id 2 (in configs as `chain_name: TESTNET`).
 
@@ -75,6 +103,17 @@ libra query block-height
 ## FILO Migration Features
 
 ### Feature 1: V7 Accounts as Slow Wallets
+
+NOTE: the epoch must have changed once.
+
+```
+## trigger new epoch, can happen ever 5 mins
+libra txs governacne epoch-boundary
+
+## check the root of trust list is not empty
+libra query view -f 0x1::root_of_trust::get_current_roots_at_registry -a 0x1
+```
+
 
 ### Description
 In V8, all V7 accounts have been converted to slow wallets. This means previously unlocked balances are now considered dormant until human reauthorization with Vouch is completed.
@@ -167,29 +206,29 @@ libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space/ user huma
 This feature allows community members to vote on reauthorizing community wallet spending. It's part of the governance improvements in V8.
 
 ### Testing Steps
+```
+export CW_ADDR=<CW ADDRESS>
+export CW_ADDR=0x2B0E8325DEA5BE93D856CFDE2D0CBA12
+```
 
 1. Check the list of pending community wallet reauthorization proposals:
 
 ```bash
-libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_pending_proposals
+libra query view -f 0x1::donor_voice_governance::is_reauth_proposed -a $CW_ADDR
 ```
 
 2. Submit your vote for a community wallet reauthorization:
 
 ```bash
-libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space community reauthorize --community-wallet <COMMUNITY_WALLET_ADDRESS>
+libra txs community reauthorize --community-wallet $CW_ADDR
 ```
 
-3. Verify your vote was recorded:
+
+3. Check the total votes on the reauthorization:
 
 ```bash
-libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_vote --args <YOUR_ADDRESS> <COMMUNITY_WALLET_ADDRESS>
-```
+libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a $CW_ADDR
 
-4. Check the total votes on the reauthorization:
-
-```bash
-libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::community_wallet::get_proposal_votes --args <COMMUNITY_WALLET_ADDRESS>
 ```
 
 ### Expected Outcome
@@ -197,23 +236,3 @@ libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::commu
 - The proposal's vote count increases accordingly
 - Once enough votes are collected, the proposal state should change to either approved or rejected
 
-## Rotate Root of Trust
-
-### Feature 5: Monitor Root of Trust Rotation
-
-### Description
-In V8, the root of trust can be rotated through a community-based process. This feature allows you to monitor the rotation process and verify the new root of trust.
-
-### Testing Steps
-
-1. Check the current root of trust:
-
-```bash
-libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::root_of_trust::get_current_root
-```
-
-2. Check if there's an ongoing rotation process:
-
-```bash
-libra query --url https://twin-rpc.openlibra.space view --function-id 0x1::root_of_trust::get_rotation_status
-```
