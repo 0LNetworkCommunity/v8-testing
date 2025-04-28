@@ -15,7 +15,7 @@ libra txs governance epoch-boundary
 # init your account
 libra txs user human-founder
 # check if your account migrated
-libra query view -f -f 0x1::founder::is_founder -a $MY_ADDR
+libra query view -f 0x1::founder::is_founder -a $MY_ADDR
 # vouch for someone
 libra txs user vouch --vouch-for $TO
 # get your social score
