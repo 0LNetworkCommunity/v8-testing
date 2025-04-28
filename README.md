@@ -108,7 +108,7 @@ NOTE: the epoch must have changed once.
 
 ```
 ## trigger new epoch, can happen ever 5 mins
-libra txs governacne epoch-boundary
+libra txs governance epoch-boundary
 
 ## check the root of trust list is not empty
 libra query view -f 0x1::root_of_trust::get_current_roots_at_registry -a 0x1
