@@ -27,7 +27,6 @@ VOUCH_ADDRESSES := \
 
 # Helper to get address from config or prompt if not found
 define get_address
-$(eval MY_ADDRESS := $(shell libra config show --path="profileConfig.default_account" 2>/dev/null))
 @if [ -z "${MY_ADDRESS}" ]; then \
     read -p "Enter your address: " MY_ADDRESS; \
     echo $$MY_ADDRESS; \
