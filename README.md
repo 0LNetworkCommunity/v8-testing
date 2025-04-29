@@ -187,7 +187,7 @@ libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space/ user huma
 6. Assuming you have some unlocked balance, try the transfer again (should succeed now):
 
   ```bash
-  libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space transfer --to <RECIPIENT_ADDRESS> --amount 10
+  libra txs --chain-name=testnet --url https://twin-rpc.openlibra.space transfer --to-account <RECIPIENT_ADDRESS> --amount 10
   ```
 
 ### Expected Outcome
