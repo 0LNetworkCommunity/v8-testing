@@ -228,8 +228,7 @@ libra txs community reauthorize --community-wallet $CW_ADDR
 3. Check the total votes on the reauthorization:
 
 ```bash
-libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a $CW_ADDR <ID OF PROPOSAL>
-
+libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a "$CW_ADDR, <ID OF PROPOSAL>"
 ```
 
 ### Expected Outcome
