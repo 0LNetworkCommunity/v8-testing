@@ -214,6 +214,7 @@ export CW_ADDR=0x2B0E8325DEA5BE93D856CFDE2D0CBA12
 1. Check the list of pending community wallet reauthorization proposals:
 
 ```bash
+libra query view -f  0x1::donor_voice_governance::get_reauth_ballots -a $CW_ADDR
 libra query view -f 0x1::donor_voice_governance::is_reauth_proposed -a $CW_ADDR
 ```
 
@@ -227,7 +228,7 @@ libra txs community reauthorize --community-wallet $CW_ADDR
 3. Check the total votes on the reauthorization:
 
 ```bash
-libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a $CW_ADDR
+libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a $CW_ADDR <ID OF PROPOSAL>
 
 ```
 
