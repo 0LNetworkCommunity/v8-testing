@@ -88,27 +88,27 @@ vouch-all:
 check-remaining-vouches:
 	@echo "Checking remaining vouches..."
 	$(eval MY_ADDRESS := $(shell $(call get_address)))
-	libra query view --function 0x1::vouch_limits::get_remaining_vouches --args $(MY_ADDRESS)
+	libra query view -f 0x1::vouch_limits::get_remaining_vouches --args $(MY_ADDRESS)
 
 check-vouch-score:
 	@echo "Checking vouch score..."
 	$(eval MY_ADDRESS := $(shell $(call get_address)))
-	libra query view --function 0x1::page_rank_lazy::get_cached_score --args $(MY_ADDRESS)
+	libra query view -f 0x1::page_rank_lazy::get_cached_score --args $(MY_ADDRESS)
 
 check-founder-status:
 	@echo "Checking founder status..."
 	$(eval MY_ADDRESS := $(shell $(call get_address)))
-	libra query view --function 0x1::founder::is_founder --args $(MY_ADDRESS)
+	libra query view -f 0x1::founder::is_founder --args $(MY_ADDRESS)
 
 check-reauthorization:
 	@echo "Checking if account is reauthorized..."
 	$(eval MY_ADDRESS := $(shell $(call get_address)))
-	libra query view --function 0x1::reauthorization::is_v8_authorized --args $(MY_ADDRESS)
+	libra query view -f 0x1::reauthorization::is_v8_authorized --args $(MY_ADDRESS)
 
 # Community Wallet Reauthorization
 list-community-wallet-proposals:
 	@echo "Listing pending community wallet proposals..."
-	libra query view --function 0x1::community_wallet::get_pending_proposals
+	libra query view -f 0x1::community_wallet::get_pending_proposals
 
 vote-community-wallet:
 	@echo "Voting on community wallet reauthorization..."
@@ -119,21 +119,21 @@ check-vote:
 	@echo "Checking your vote on a community wallet..."
 	$(eval MY_ADDRESS := $(shell $(call get_address)))
 	@read -p "Enter community wallet address: " WALLET; \
-	libra query view --function 0x1::community_wallet::get_vote --args $(MY_ADDRESS) $$WALLET
+	libra query view -f 0x1::community_wallet::get_vote --args $(MY_ADDRESS) $$WALLET
 
 check-proposal-votes:
 	@echo "Checking total votes on a community wallet proposal..."
 	@read -p "Enter community wallet address: " WALLET; \
-	libra query view --function 0x1::community_wallet::get_proposal_votes --args $$WALLET
+	libra query view -f 0x1::community_wallet::get_proposal_votes --args $$WALLET
 
 # Root of Trust
 check-root-of-trust:
 	@echo "Checking current root of trust..."
-	libra query view --function 0x1::root_of_trust::get_current_root
+	libra query view -f 0x1::root_of_trust::get_current_root
 
 check-rotation-status:
 	@echo "Checking root of trust rotation status..."
-	libra query view --function 0x1::root_of_trust::get_rotation_status
+	libra query view -f 0x1::root_of_trust::get_rotation_status
 
 # Help
 help:
