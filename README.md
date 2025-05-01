@@ -230,6 +230,12 @@ libra txs community reauthorize --community-wallet $CW_ADDR
 ```bash
 libra query view -f 0x1::donor_voice_governance::get_reauth_tally -a "$CW_ADDR, <ID OF PROPOSAL>"
 ```
+## CW can send transactions
+
+```
+libra txs community propose -c $CW_ADDR -r 0x37799DA327DB4C58D5E28E7DD6338F6B -a 1000 -d test0
+```
+
 
 ### Expected Outcome
 - Your vote is recorded successfully
