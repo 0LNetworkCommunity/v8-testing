@@ -239,7 +239,7 @@ libra txs community propose -c $CW_ADDR -r 0xECAF65ADD1B785B0495E3099F4045EC0 -a
 
 ```
 ```
-libra txs community propose -c $CW_ADDR -r 0x37799DA327DB4C58D5E28E7DD6338F6B -a 1000 -d test1 --advance
+libra txs community propose -c $CW_ADDR -r 0x37799DA327DB4C58D5E28E7DD6338F6B -a 1000 -d test1 --unlocked-advance
 ```
 
 
