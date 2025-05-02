@@ -4,6 +4,8 @@ Thank you for participating in testing the new V8 features on our twin testnet. 
 
 ### See participating [testnet accounts addresses](./test-accounts.md)
 
+Explorer is here: https://twin-explorer.openlibra.space/
+
 # Cheat Sheet
 
 ```
